@@ -1,19 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
+import 'package:test/model/photo_model.dart';
 import 'package:test/view/compounts/reusable_container.dart';
 
 class TabviewPage extends StatelessWidget {
-  const TabviewPage({super.key});
+  List<PhotoModel> photos;
+  TabviewPage({super.key, required this.photos});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Column(children: [
+      child: ListView(children: [
         ReusableContainer(
           height: 150.h,
           width: 200.w,
-          color: Colors.red,
+          image: photos.first.url,
           radius: 1,
+          padding: 20,
         ),
         // gridview.builder for ReusableContainer
         SizedBox(
@@ -23,7 +27,7 @@ class TabviewPage extends StatelessWidget {
             padding: const EdgeInsets.all(23),
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 3,
-              childAspectRatio: 1.3,
+              childAspectRatio: 1.6,
               crossAxisSpacing: 10,
               mainAxisSpacing: 10,
             ),
@@ -43,7 +47,7 @@ class TabviewPage extends StatelessWidget {
             padding: const EdgeInsets.all(23),
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 3,
-              childAspectRatio: 1.3,
+              childAspectRatio: 1.6,
               crossAxisSpacing: 10,
               mainAxisSpacing: 10,
             ),
@@ -62,20 +66,46 @@ class TabviewPage extends StatelessWidget {
         ReusableContainer(
           height: 100.h,
           width: 200.w,
-          color: Colors.red,
+          image: photos[2].url,
           radius: 1,
+          padding: 20,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 15.h),
+              padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
               child: Text(
                 "Hello Banner",
                 style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.bold),
               ),
             ),
           ],
+        ),
+        Obx(
+          () => SizedBox(
+            height: 150.h,
+            child: GridView.builder(
+              physics: const NeverScrollableScrollPhysics(),
+              padding: EdgeInsets.symmetric(
+                horizontal: 20.w,
+              ),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 3,
+                childAspectRatio: .5,
+                mainAxisExtent: 65,
+                crossAxisSpacing: 6,
+                mainAxisSpacing: 6,
+              ),
+              itemCount: photos.length,
+              itemBuilder: (context, index) => ReusableContainer(
+                color: Colors.amber,
+                radius: 10,
+                border: 1,
+                image: photos[index].url,
+              ),
+            ),
+          ),
         )
       ]),
     );

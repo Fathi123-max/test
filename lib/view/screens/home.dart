@@ -6,7 +6,7 @@ import 'package:test/view/compounts/searchbar.dart';
 import 'package:test/view/compounts/vertical_tabs.dart';
 
 class Home extends StatelessWidget {
-  const Home({super.key});
+  const Home({Key? key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,10 @@ class Home extends StatelessWidget {
               height: 50.h,
               child: CustomSearchBar(key: key),
             ),
-            SizedBox(height: Get.height * .81, child: CustomVerticalTabs()),
+            Expanded(
+              child: SizedBox(
+                  height: Get.height * .815, child: CustomVerticalTabs()),
+            ),
           ],
         ),
       ),

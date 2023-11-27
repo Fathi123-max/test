@@ -10,9 +10,12 @@ class ReusableContainer extends StatelessWidget {
   final double? width;
   final double? height;
   final double? border;
+  final double? padding;
+
   const ReusableContainer(
       {this.height,
       this.width,
+      this.padding,
       this.border,
       Key? key,
       this.color,
@@ -24,27 +27,32 @@ class ReusableContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: height,
-      width: width,
-      decoration: BoxDecoration(
-        color: color,
-        border: Border.all(
-            color: Colors.grey,
-            style: border == null ? BorderStyle.none : BorderStyle.solid,
-            width: border ?? 0),
-        image: DecorationImage(
-            image: NetworkImage(image ?? ""), fit: BoxFit.cover),
-        borderRadius: BorderRadius.circular(radius ?? 30),
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: padding ?? 0),
+      child: Container(
+        height: height,
+        width: width,
+        decoration: BoxDecoration(
+          color: color,
+          border: Border.all(
+              color: Colors.grey,
+              style: border == null ? BorderStyle.none : BorderStyle.solid,
+              width: border ?? 0),
+          image: DecorationImage(
+            image: NetworkImage(image ?? ""),
+            fit: BoxFit.cover,
+          ),
+          borderRadius: BorderRadius.circular(radius ?? 30),
+        ),
+        child: text != null
+            ? Center(
+                child: Text(
+                  text ?? "test",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+              )
+            : child,
       ),
-      child: text != null
-          ? Center(
-              child: Text(
-                text ?? "test",
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-            )
-          : child,
     );
   }
 }

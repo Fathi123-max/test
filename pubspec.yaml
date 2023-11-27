@@ -38,6 +38,8 @@ dependencies:
   get: ^4.6.5
   vertical_tabs_flutter: ^1.0.0
   flutter_screenutil: ^5.9.0
+  http: ^0.13.5
+
 
 dev_dependencies:
   flutter_test:
