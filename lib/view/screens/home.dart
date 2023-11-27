@@ -16,7 +16,8 @@ class Home extends StatelessWidget {
         body: Column(
           children: [
             SizedBox(
-              height: 50.h,
+              height: 55.w,
+              width: 350.w,
               child: CustomSearchBar(key: key),
             ),
             Expanded(

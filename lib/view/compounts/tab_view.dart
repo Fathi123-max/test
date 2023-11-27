@@ -16,45 +16,46 @@ class TabviewPage extends StatelessWidget {
           height: 150.h,
           width: 200.w,
           image: photos.first.url,
-          radius: 1,
-          padding: 20,
+          radius: 1.r,
+          padding: 10.h,
         ),
         // gridview.builder for ReusableContainer
         SizedBox(
-          height: 110.h,
+          height: 88.w,
           child: GridView.builder(
             physics: const NeverScrollableScrollPhysics(),
-            padding: const EdgeInsets.all(23),
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            padding: EdgeInsets.all(10.h),
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 3,
-              childAspectRatio: 1.6,
-              crossAxisSpacing: 10,
-              mainAxisSpacing: 10,
+              childAspectRatio: 1.2.h,
+              crossAxisSpacing: 7.h,
+              mainAxisSpacing: 7.h,
             ),
             itemCount: 6,
-            itemBuilder: (context, index) => const ReusableContainer(
+            itemBuilder: (context, index) => ReusableContainer(
               color: Colors.white,
-              radius: 10,
+              radius: 10.r,
               text: "hello",
               border: 1,
             ),
           ),
         ),
+
         SizedBox(
-          height: 60.h,
+          height: 45.w,
           child: GridView.builder(
             physics: const NeverScrollableScrollPhysics(),
-            padding: const EdgeInsets.all(23),
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            padding: EdgeInsets.all(10.h),
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 3,
-              childAspectRatio: 1.6,
-              crossAxisSpacing: 10,
-              mainAxisSpacing: 10,
+              childAspectRatio: 1.2.h,
+              crossAxisSpacing: 7.h,
+              mainAxisSpacing: 7.h,
             ),
             itemCount: 3,
-            itemBuilder: (context, index) => const ReusableContainer(
+            itemBuilder: (context, index) => ReusableContainer(
               color: Colors.red,
-              radius: 10,
+              radius: 10.r,
               text: "Welcome",
             ),
           ),
@@ -67,14 +68,14 @@ class TabviewPage extends StatelessWidget {
           height: 100.h,
           width: 200.w,
           image: photos[2].url,
-          radius: 1,
-          padding: 20,
+          radius: 1.r,
+          padding: 10.h,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
+              padding: EdgeInsets.all(10.h),
               child: Text(
                 "Hello Banner",
                 style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.bold),
@@ -87,20 +88,18 @@ class TabviewPage extends StatelessWidget {
             height: 150.h,
             child: GridView.builder(
               physics: const NeverScrollableScrollPhysics(),
-              padding: EdgeInsets.symmetric(
-                horizontal: 20.w,
-              ),
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              padding: EdgeInsets.all(10.h),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 3,
-                childAspectRatio: .5,
+                childAspectRatio: .5.h,
                 mainAxisExtent: 65,
-                crossAxisSpacing: 6,
-                mainAxisSpacing: 6,
+                crossAxisSpacing: 5.h,
+                mainAxisSpacing: 5.h,
               ),
               itemCount: photos.length,
               itemBuilder: (context, index) => ReusableContainer(
                 color: Colors.amber,
-                radius: 10,
+                radius: 10.r,
                 border: 1,
                 image: photos[index].url,
               ),

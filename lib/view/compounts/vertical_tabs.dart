@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:test/controller/photos_controller.dart';
 import 'package:test/controller/user_controllers.dart';
@@ -14,7 +15,7 @@ class CustomVerticalTabs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 20),
+      padding: EdgeInsets.only(top: 18.h),
       child: Obx(
         () => userController.isLoading.value || photosController.isLoading.value
             ? const Center(
@@ -22,7 +23,7 @@ class CustomVerticalTabs extends StatelessWidget {
               )
             : VerticalTabs(
                 indicatorSide: IndicatorSide.start,
-                tabsWidth: 150,
+                tabsWidth: 150.w,
                 contentScrollAxis: Axis.horizontal,
                 tabsShadowColor: Colors.white,
                 tabBackgroundColor: Colors.white,
@@ -33,6 +34,7 @@ class CustomVerticalTabs extends StatelessWidget {
                   for (int i = 0; i < userController.users.length; i++)
                     Tab(
                       text: userController.users[i].name,
+                      height: 25.h,
                     ),
                 ],
                 contents: <Widget>[

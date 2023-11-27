@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 // create a class for reuable container has parameters like  color and text chid  and background image border radius
 class ReusableContainer extends StatelessWidget {
@@ -42,13 +43,14 @@ class ReusableContainer extends StatelessWidget {
             image: NetworkImage(image ?? ""),
             fit: BoxFit.cover,
           ),
-          borderRadius: BorderRadius.circular(radius ?? 30),
+          borderRadius: BorderRadius.circular(radius ?? 30.r),
         ),
         child: text != null
             ? Center(
                 child: Text(
                   text ?? "test",
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                  style:
+                      TextStyle(fontWeight: FontWeight.bold, fontSize: 10.sp),
                 ),
               )
             : child,
